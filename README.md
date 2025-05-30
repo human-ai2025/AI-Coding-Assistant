@@ -1,6 +1,6 @@
 # AI Coding Assistant with Decoupled LangGraph Agent and MCP Tool Server
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <!-- Replace with your chosen license -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 This project demonstrates a powerful and flexible architecture for building AI agents, specifically an AI Coding Assistant. It features a **LangGraph** agent for orchestrating workflows, decoupled from a **Modular Command Protocol (MCP)** tool server that handles actual tool execution. Communication between the agent and the tool server is achieved in real-time using **Server-Sent Events (SSE)**, and the tool server is **Dockerized** for ease of deployment and scalability.
 
@@ -61,7 +61,7 @@ The system consists of two main components:
     *   Streams output, logs, and results back to the LangGraph agent using Server-Sent Events (SSE).
 
 ```
-+---------------------+        HTTP/LangGraph API       +---------------------+
++---------------------+                         I       +---------------------+
 |     User / Client   |<------------------------------->|  LangGraph Agent    |
 +---------------------+                                 | (e.g., agent.py)    |
                                                         +----------^----------+
@@ -97,7 +97,6 @@ The system consists of two main components:
 *   **LangChain & LangGraph:** For AI agent orchestration and state management.
 *   **MCP (Model Context Protocol):** Custom implementation for tool interaction.
 *   **Server-Sent Events (SSE):** For real-time communication from server to client (MCP server to LangGraph agent).
-    *   Likely implemented using a web framework like `aiohttp`, `FastAPI`, or `Flask` on the MCP server-side. (Your `mcp_server.py` details this).
 *   **Docker:** For containerizing and deploying the MCP Tool Server.
 
 
@@ -108,7 +107,8 @@ The system consists of two main components:
 *   [Git](https://git-scm.com/)
 *   [Python](https://www.python.org/downloads/) (3.9+ recommended)
 *   [Docker](https://www.docker.com/get-started)
-*   `pip` (Python package installer)
+*   `uv` 
+*    `langGraph`
 
 ### Installation
 
@@ -127,10 +127,10 @@ The system consists of two main components:
 
 ### Running the MCP Tool Server (Docker)
 
-The `terminal_server.py` (or your main MCP server script) is designed to be run inside a Docker container.
+The `terminal_server.py` is designed to be run inside a Docker container.
 
 1.  **Build the Docker image:**
-    (Ensure your `Dockerfile` is correctly configured to copy necessary files and expose the correct port, e.g., 8080 or 8000)
+    (Ensure your `Dockerfile` is correctly configured to copy necessary files and expose the correct port, e.g., 8080 )
     ```bash
     docker build -t mcp-tool-server .
     ```
@@ -141,7 +141,7 @@ The `terminal_server.py` (or your main MCP server script) is designed to be run 
     docker run -d -p 8080:8080  D:\devlopment\mcp\workspace:/root/mcp/workspace terminal_server
     ```
     *   `-d`: Run in detached mode.
-    *   `-p 8081:8081`: Map port 8080 on the host to port 8080 in the container.
+    *   `-p 8080:8080`: Map port 8080 on the host to port 8080 in the container.
     *   `-v  D:\devlopment\mcp\workspace:/root/mcp/workspace terminal_server` : mount volume 
 
 ### Running the LangGraph Agent
@@ -152,7 +152,7 @@ The `terminal_server.py` (or your main MCP server script) is designed to be run 
 2.  **Run the agent script:**
     ```bash
     cd client
-    uv run client.py http://localhost:8081/sse
+    uv run client.py http://localhost:8080/sse
     ```
 
 ## Usage Example
