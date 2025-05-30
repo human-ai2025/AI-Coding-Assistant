@@ -55,7 +55,7 @@ The system consists of two main components:
     *   Processes tool results and formulates a response.
 
 2.  **MCP Tool Server (Dockerized):**
-    *   Exposes tools (e.g., a terminal execution tool) via the Modular Command Protocol.
+    *   Exposes tools (e.g., a terminal execution tool) via the Model Context Protocol.
     *   Listens for requests from the LangGraph agent.
     *   Executes the requested tool with the provided parameters.
     *   Streams output, logs, and results back to the LangGraph agent using Server-Sent Events (SSE).
