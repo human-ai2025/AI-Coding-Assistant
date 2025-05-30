@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
-This project demonstrates a powerful and flexible architecture for building AI agents, specifically an AI Coding Assistant. It features a **LangGraph** agent for orchestrating workflows, decoupled from a **Modular Command Protocol (MCP)** tool server that handles actual tool execution. Communication between the agent and the tool server is achieved in real-time using **Server-Sent Events (SSE)**, and the tool server is **Dockerized** for ease of deployment and scalability.
+This project demonstrates a powerful and flexible architecture for building AI agents, specifically an AI Coding Assistant. It features a **LangGraph** agent for orchestrating workflows, decoupled from a **Model Context (MCP)** tool server that handles actual tool execution. Communication between the agent and the tool server is achieved in real-time using **Server-Sent Events (SSE)**, and the tool server is **Dockerized** for ease of deployment and scalability.
 
 **GitHub Repository:** [https://github.com/human-ai2025/AI-Coding-Assistant](https://github.com/human-ai2025/AI-Coding-Assistant)
 
@@ -37,7 +37,7 @@ This AI Coding Assistant can leverage tools (like a terminal executor) hosted on
 ## Key Features
 
 *   **Decoupled Architecture:** Separation of concerns between agent orchestration and tool execution.
-*   **Modular Command Protocol (MCP):** A standardized way for agents to discover and interact with tools.
+*   **Model Context Protocol (MCP):** A standardized way for agents to discover and interact with tools.
 *   **LangGraph Orchestration:** Leverages the power of LangGraph to define complex agentic workflows.
 *   **Server-Sent Events (SSE):** Enables real-time, unidirectional communication from the MCP server to the LangGraph agent for streaming logs and results.
 *   **Dockerized Tool Server:** The MCP tool server (e.g., `terminal_server.py`) is containerized for portability and easy deployment.
